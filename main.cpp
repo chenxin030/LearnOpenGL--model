@@ -79,6 +79,28 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		ourShader.use();
+		ourShader.setVec3("viewPos", camera.Position);
+
+		ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+		ourShader.setVec3("dirLight.ambient", 0.5f, 0.5f, 0.5f);
+		ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+		ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+
+		ourShader.setVec3("pointLights[0].position", 10.0f, 10.0f, 10.0f);
+		ourShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+		ourShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+		ourShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+		ourShader.setFloat("pointLights[0].constant", 1.0f);
+		ourShader.setFloat("pointLights[0].linear", 0.35f);
+		ourShader.setFloat("pointLights[0].quadratic", 0.44f);
+
+		ourShader.setVec3("pointLights[1].position", -10.0f, 10.0f, -10.0f);
+		ourShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+		ourShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+		ourShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+		ourShader.setFloat("pointLights[1].constant", 1.0f);
+		ourShader.setFloat("pointLights[1].linear", 0.35f);
+		ourShader.setFloat("pointLights[1].quadratic", 0.44f);
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
